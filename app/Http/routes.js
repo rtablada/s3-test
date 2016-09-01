@@ -17,4 +17,17 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.get('/').render('welcome')
+
+const File = use('File')
+
+Route.post('/', function * (request, response) {
+  const avatar = request.file('avatar', {
+    maxSize: '2mb',
+    allowedExtensions: ['jpg', 'png', 'jpeg']
+  })
+
+  yield File.upload(avatar.clientName(), avatar)
+
+  response.send('done');
+});

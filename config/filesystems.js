@@ -5,7 +5,7 @@ const Helpers = use('Helpers')
 
 module.exports = {
 
-  default: 'public',
+  default: 's3',
 
   public: {
     driver: 'local',
